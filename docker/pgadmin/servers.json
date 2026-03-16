@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "gb-com-inventory-db",
+      "Group": "Servers",
+      "Host": "gb-com-inventory-db-1",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "gb-com-inventory",
+      "SSLMode": "prefer"
+    }
+  }
+}

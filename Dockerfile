@@ -1,0 +1,82 @@
+# Dockerfile that builds a fully functional image of your app.
+#
+# This image installs all Python dependencies for your application. It's based
+# on Almalinux (https://github.com/inveniosoftware/docker-invenio)
+# and includes Pip, Pipenv, Node.js, NPM and some few standard libraries
+# Invenio usually needs.
+#
+# Note: It is important to keep the commands in this file in sync with your
+# bootstrap script located in ./scripts/bootstrap.
+
+FROM registry.cern.ch/inveniosoftware/almalinux:1
+
+# begin copy from demo
+
+ENV KEYTAB_PATH='/var/lib/secrets'
+ENV KERBEROS_TOKEN_PATH='/var/run/krb5-tokens'
+
+RUN dnf install -y epel-release
+RUN dnf update -y
+# CRB (Code Ready Builder): equivalent repository to well-known CentOS PowerTools
+RUN dnf install -y yum-utils
+RUN dnf config-manager --set-enabled crb
+
+# Volume where to mount the keytab as a secrets
+# If credentials are passed as username and password with
+# KEYTAB_USER and KEYTAB_PWD environment variables, a keytab will be
+# generated and stored in KEYTAB_PATH.
+RUN dnf install -y kstart krb5-workstation
+# volume needed for the token file
+VOLUME ["${KERBEROS_TOKEN_PATH}"]
+
+RUN mkdir -p $KEYTAB_PATH && chmod a+rw $KEYTAB_PATH
+
+# todo: add standford package repo when available, epel-release provides only the latest
+# xrootd release
+ARG xrootd_version=""
+RUN if [ ! -z "$xrootd_version" ] ; then XROOTD_V="-$xrootd_version" ; else XROOTD_V="" ; fi && \
+    echo "Will install xrootd version: $XROOTD_V (latest if empty)" && \
+    dnf install -y xrootd"$XROOTD_V" python3-xrootd"$XROOTD_V"
+
+# end copy from demo
+
+RUN curl -fsSL https://pyenv.run | bash
+ENV PYENV_ROOT="/root/.pyenv"
+ENV PATH="${PYENV_ROOT}/shims/:${PYENV_ROOT}/bin:${PATH}"
+RUN pyenv install 3.12.12 && pyenv global 3.12.12 && pyenv rehash
+
+COPY site ./site
+COPY Pipfile Pipfile.lock ./
+#RUN pipenv --system --python 3.12
+#RUN pip install pipenv && python -m pipenv install --deploy --system
+RUN pipenv requirements > requirements.txt && pip install -r requirements.txt
+# next 2 lines also from demo
+RUN dnf install -y cmake libuuid-devel && dnf clean all
+RUN pip install invenio-xrootd>=2.0.0a1 && pip cache purge
+
+COPY ./docker/uwsgi/ ${INVENIO_INSTANCE_PATH}
+COPY ./invenio.cfg ${INVENIO_INSTANCE_PATH}
+COPY ./templates/ ${INVENIO_INSTANCE_PATH}/templates/
+COPY ./app_data/ ${INVENIO_INSTANCE_PATH}/app_data/
+COPY ./translations/ ${INVENIO_INSTANCE_PATH}/translations/
+COPY ./ .
+
+RUN cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
+    cp -r ./assets/. ${INVENIO_INSTANCE_PATH}/assets/ && \
+    pipenv run invenio collect --verbose  && \
+    pipenv run invenio webpack buildall
+
+# rest is also from demo
+
+# application build args to be exposed as environment variables
+ARG IMAGE_BUILD_TIMESTAMP
+ARG SENTRY_RELEASE
+
+# Expose random sha to uniquely identify this build
+ENV INVENIO_IMAGE_BUILD_TIMESTAMP="'${IMAGE_BUILD_TIMESTAMP}'"
+ENV SENTRY_RELEASE=${SENTRY_RELEASE}
+
+RUN pipenv --clear
+RUN echo "Image build timestamp $INVENIO_IMAGE_BUILD_TIMESTAMP"
+
+ENTRYPOINT [ "bash", "-c"]
