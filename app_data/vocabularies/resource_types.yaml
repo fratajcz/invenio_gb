@@ -1,0 +1,23 @@
+- id: dataset
+  title:
+    en: Dataset
+- id: dataset-bulk-rna-seq
+  icon: table
+  title: 
+    en: Dataset (bulk RNAseq)
+  props:
+    type: dataset
+    subtype: dataset-bulk-rna-seq
+  tags:
+    - depositable
+    - linkable
+- id: dataset-dna-seq
+  icon: table
+  title: 
+    en: Dataset (DNAseq)
+  props:
+    type: dataset
+    subtype: dataset-dna-seq
+  tags:
+    - depositable
+    - linkable

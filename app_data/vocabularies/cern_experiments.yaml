@@ -1,0 +1,12 @@
+- id: ATLAS
+  title:
+    en: ATLAS
+  tags:
+    - depositable
+    - linkable
+- id: LHC
+  title:
+    en: Large Hadron Collider
+  tags:
+    - depositable
+    - linkable

@@ -1,0 +1,12 @@
+- id: homo sapiens
+  title:
+    en: human
+  tags:
+    - depositable
+    - linkable
+- id: mus musculus
+  title:
+    en: mouse
+  tags:
+    - depositable
+    - linkable
