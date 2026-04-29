@@ -1,0 +1,87 @@
+- id: A01
+  title:
+    en: A01
+  tags:
+    - depositable
+    - linkable
+- id: A02
+  title:
+    en: A02
+  tags:
+    - depositable
+    - linkable
+- id: A03
+  title:
+    en: A03
+  tags:
+    - depositable
+    - linkable
+- id: A04
+  title:
+    en: A04
+  tags:
+    - depositable
+    - linkable
+
+- id: B01
+  title:
+    en: B01
+  tags:
+    - depositable
+    - linkable
+- id: B02
+  title:
+    en: B02
+  tags:
+    - depositable
+    - linkable
+- id: B03
+  title:
+    en: B03
+  tags:
+    - depositable
+    - linkable
+- id: B04
+  title:
+    en: B04
+  tags:
+    - depositable
+    - linkable
+- id: B05N
+  title:
+    en: B05N
+  tags:
+    - depositable
+    - linkable
+
+- id: C01
+  title:
+    en: C01
+  tags:
+    - depositable
+    - linkable
+
+- id: C02
+  title:
+    en: C02
+  tags:
+    - depositable
+    - linkable
+- id: Z01
+  title:
+    en: Z01
+  tags:
+    - depositable
+    - linkable
+- id: Z02
+  title:
+    en: Z02
+  tags:
+    - depositable
+    - linkable
+- id: other
+  title:
+    en: other
+  tags:
+    - depositable
+    - linkable

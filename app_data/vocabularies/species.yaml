@@ -1,0 +1,24 @@
+- id: human
+  title:
+    en: human
+  tags:
+    - depositable
+    - linkable
+- id: mouse
+  title:
+    en: mouse
+  tags:
+    - depositable
+    - linkable
+- id: metagenome
+  title:
+    en: metagenome
+  tags:
+    - depositable
+    - linkable
+- id: other
+  title:
+    en: other
+  tags:
+    - depositable
+    - linkable

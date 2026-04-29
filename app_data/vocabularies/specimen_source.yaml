@@ -1,0 +1,20 @@
+- id: gut
+  title:
+    en: gut
+  tags:
+    - depositable
+    - linkable
+
+- id: brain
+  title:
+    en: brain
+  tags:
+    - depositable
+    - linkable
+
+- id: other
+  title:
+    en: other
+  tags:
+    - depositable
+    - linkable

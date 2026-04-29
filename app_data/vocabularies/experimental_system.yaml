@@ -1,0 +1,18 @@
+- id: in vivo
+  title:
+    en: in vivo
+  tags:
+    - depositable
+    - linkable
+- id: in vitro
+  title:
+    en: in vitro
+  tags:
+    - depositable
+    - linkable
+- id: other
+  title:
+    en: other
+  tags:
+    - depositable
+    - linkable
