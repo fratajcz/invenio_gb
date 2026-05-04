@@ -9,7 +9,8 @@ RUN dnf upgrade --refresh -y && \
         glibc-common \
         glibc-locale-source \
         glibc-langpack-en \
-        gcc
+        gcc \
+        ca-certificates
 
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
@@ -93,6 +94,7 @@ WORKDIR ${WORKING_DIR}/src
 
 ENV KEYTAB_PATH='/var/lib/secrets'
 ENV KERBEROS_TOKEN_PATH='/var/run/krb5-tokens'
+ENV AWS_CA_BUNDLE="/etc/pki/tls/certs/"
 
 RUN dnf install -y epel-release
 RUN dnf update -y
