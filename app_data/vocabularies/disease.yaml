@@ -1,0 +1,60 @@
+- id: Alzheimer's disease (AD)
+  title:
+    en: Alzheimer's disease (AD)
+  tags:
+    - depositable
+    - linkable
+- id: Amyotrophic lateral sclerosis (ALS)
+  title:
+    en: Amyotrophic lateral sclerosis (ALS)
+  tags:
+    - depositable
+    - linkable
+- id: Crohn's disease (CD)
+  title:
+    en: Crohn's disease (CD)
+  tags:
+    - depositable
+    - linkable
+- id: Huntington's disease (HD)
+  title:
+    en: Huntington's disease (HD)
+  tags:
+    - depositable
+    - linkable
+- id: Inflammatory Bower Disease (IBD) (not UC nor CD)
+  title:
+    en: Inflammatory Bower Disease (IBD) (not UC nor CD)
+  tags:
+    - depositable
+    - linkable
+- id: Multiple Sclerosis (MS)
+  title:
+    en: Multiple Sclerosis (MS)
+  tags:
+    - depositable
+    - linkable
+- id: Parkinson's disease (PD)
+  title:
+    en: Parkinson's disease (PD)
+  tags:
+    - depositable
+    - linkable
+- id: Ulcerative Colitis (UC)
+  title:
+    en: Ulcerative Colitis (UC)
+  tags:
+    - depositable
+    - linkable
+- id: other
+  title:
+    en: other
+  tags:
+    - depositable
+    - linkable
+- id: not applicable
+  title:
+    en: not applicable
+  tags:
+    - depositable
+    - linkable

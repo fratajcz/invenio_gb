@@ -1,18 +1,18 @@
-- id: human
+- id: primary patient tissue
   title:
-    en: human
+    en: primary patient tissue
   tags:
     - depositable
     - linkable
-- id: mouse
+- id: patient-derived cells
   title:
-    en: mouse
+    en: patient-derived cells
   tags:
     - depositable
     - linkable
-- id: metagenome
+- id: cell lines
   title:
-    en: metagenome
+    en: cell lines
   tags:
     - depositable
     - linkable

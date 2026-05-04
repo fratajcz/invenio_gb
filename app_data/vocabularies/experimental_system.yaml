@@ -16,3 +16,9 @@
   tags:
     - depositable
     - linkable
+- id: not applicable
+  title:
+    en: not applicable
+  tags:
+    - depositable
+    - linkable

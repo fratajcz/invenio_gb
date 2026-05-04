@@ -15,12 +15,17 @@ experimentalsystem:
   pid-type: expsys
   data-file: vocabularies/experimental_system.yaml
 specimensource:
-  pid-type: spmtyp
-  data-file: vocabularies/specimen_source.yaml
+  pid-type: tiss
+  data-file: vocabularies/tissue.yaml
 projectid:
   pid-type: prid
   data-file: vocabularies/projectid.yaml
-
+disease:
+  pid-type: dise
+  data-file: vocabularies/disease.yaml
+specimen:
+  pid-type: speci
+  data-file: vocabularies/specimen.yaml
 # Minimal example vocabularies
 # can be used for quick testing, or a basis for building your own customized vocabularies.
 #names:
