@@ -16,6 +16,9 @@
   props:
     type: dataset
     subtype: dataset-metabolomics
+  tags:
+    - depositable
+    - linkable
 
 - id: dataset-sp-metabolomics
   icon: table
@@ -24,6 +27,10 @@
   props:
     type: dataset
     subtype: dataset-sp-metabolomics
+  tags:
+    - depositable
+    - linkable
+
 - id: dataset-metagenomics
   icon: table
   title: 
@@ -31,6 +38,10 @@
   props:
     type: dataset
     subtype: dataset-metagenomics
+  tags:
+    - depositable
+    - linkable
+
 - id: dataset-sc-rna-seq
   icon: table
   title: 
@@ -41,6 +52,7 @@
   tags:
     - depositable
     - linkable
+
 - id: dataset-sp-sc-rna-seq
   icon: table
   title: 
@@ -51,6 +63,7 @@
   tags:
     - depositable
     - linkable
+
 - id: dataset-proteomics
   icon: table
   title: 
@@ -58,6 +71,10 @@
   props:
     type: dataset
     subtype: dataset-proteomics
+  tags:
+    - depositable
+    - linkable
+  
 - id: dataset-sp-proteomics
   icon: table
   title: 
@@ -68,6 +85,7 @@
   tags:
     - depositable
     - linkable
+
 - id: publication
   icon: file alternate
   props:

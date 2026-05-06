@@ -10,7 +10,9 @@ RUN dnf upgrade --refresh -y && \
         glibc-locale-source \
         glibc-langpack-en \
         gcc \
-        ca-certificates
+        ca-certificates && \
+        update-ca-trust && \
+        update-crypto-policies --set DEFAULT
 
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
@@ -94,7 +96,7 @@ WORKDIR ${WORKING_DIR}/src
 
 ENV KEYTAB_PATH='/var/lib/secrets'
 ENV KERBEROS_TOKEN_PATH='/var/run/krb5-tokens'
-ENV AWS_CA_BUNDLE="/etc/pki/tls/certs/"
+ENV AWS_CA_BUNDLE="/etc/pki/tls/certs/ca-certificates.crt"
 
 RUN dnf install -y epel-release
 RUN dnf update -y
@@ -144,6 +146,8 @@ RUN chgrp -R 0 ${WORKING_DIR} && \
     chmod -R g=u ${WORKING_DIR} && \
     useradd invenio --uid ${INVENIO_USER_ID} --gid 0 && \
     chown -R invenio:root ${WORKING_DIR}
+
+#RUN cat /etc/pki/tls/certs/ca-certificates.crt >> /home/invenio/.local/lib/python3.12/site-packages/certifi/cacert.pem
 
 USER ${INVENIO_USER_ID}:${INVENIO_USER_ID}
 
