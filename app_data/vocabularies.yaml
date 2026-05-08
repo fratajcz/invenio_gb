@@ -14,7 +14,7 @@ species:
 experimentalsystem:
   pid-type: expsys
   data-file: vocabularies/experimental_system.yaml
-specimensource:
+tissue:
   pid-type: tiss
   data-file: vocabularies/tissue.yaml
 projectid:
@@ -31,9 +31,9 @@ specimen:
 #names:
 #  pid-type: names
 #  data-file: vocabularies/names.yaml
-#licenses:
-#  pid-type: lic
-#  data-file: vocabularies/cc_licences.csv
+licenses:
+  pid-type: lic
+  data-file: vocabularies/cc_licences.csv
 #languages:
 #  pid-type: lng
 #  data-file: vocabularies/languages.yaml
