@@ -9,6 +9,28 @@
     - depositable
     - linkable
     
+- id: dataset-imaging-if
+  icon: table
+  title: 
+    en: Imaging (IF)
+  props:
+    type: dataset
+    subtype: dataset-imaging-if
+  tags:
+    - depositable
+    - linkable
+
+- id: dataset-imaging-pathology
+  icon: table
+  title: 
+    en: Imaging (Pathology)
+  props:
+    type: dataset
+    subtype: dataset-imaging-pathology
+  tags:
+    - depositable
+    - linkable
+
 - id: dataset-metabolomics
   icon: table
   title: 
