@@ -98,6 +98,7 @@ services:
     environment:
       MINIO_ROOT_USER: CHANGE_ME
       MINIO_ROOT_PASSWORD: CHANGE_ME
+      TZ: "Europe/Berlin"
     volumes:
       - ./data:/data
     command: server /data --console-address :9001

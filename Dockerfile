@@ -12,8 +12,8 @@ RUN dnf upgrade --refresh -y && \
         gcc \
         ca-certificates && \
         update-ca-trust && \
-        update-crypto-policies --set DEFAULT
-
+        update-crypto-policies --set DEFAULT 
+        
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV LANG=en_US.UTF8
@@ -52,7 +52,9 @@ RUN dnf install -y \
         procps-ng htop less \
         strace lsof file \
         iotop iftop \
-        tcpdump bind-utils
+        tcpdump bind-utils \
+        postgresql
+
 
 RUN dnf remove six && rm -rf /usr/lib/python3.12/site-packages/six*
 # Symlink Python
@@ -111,7 +113,7 @@ COPY Pipfile Pipfile.lock ./
 #RUN pipenv --system --python 3.12
 #RUN pip install pipenv && python -m pipenv install --deploy --system
 
-RUN pipenv requirements > requirements.txt && pip install -r requirements.txt && pip cache purge
+RUN pipenv requirements > requirements.txt && pip install -r requirements.txt && pip install s3fs && pip cache purge
 # next 2 lines also from demo
 #RUN dnf install -y cmake libuuid-devel && dnf clean all
 #RUN pip install invenio-xrootd>=2.0.0a1 && pip cache purge
@@ -126,7 +128,8 @@ COPY ./ .
 RUN cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
     cp -r ./assets/. ${INVENIO_INSTANCE_PATH}/assets/ && \
     pipenv run invenio collect --verbose  && \
-    pipenv run invenio webpack buildall
+    pipenv run invenio webpack buildall && \
+    pipenv run npm install -g elasticdump
 
 # rest is also from demo
 

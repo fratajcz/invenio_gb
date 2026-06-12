@@ -9,10 +9,12 @@ import urllib3
 # Suppress SSL warnings for self-signed certs (localhost dev environment)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-API_URL = "https://127.0.0.1:400/api/records"
+API_URL = "https://127.0.0.1:5000/api/records"
+
+FILE_NAME = "new_records.json"
 
 # Optional: set a Bearer token if authentication is required
-API_TOKEN = None  # e.g. "your-token-here"
+API_TOKEN = "GVilIY1rjbZSMvf3OFFCtp1IKVzsvM0cDi0tbWYcjWsVI1UMdGpC2XshIHhA"  # e.g. "your-token-here"
 
 
 def fetch_records(url: str) -> list[dict]:
@@ -85,10 +87,12 @@ def transform_record(record: dict) -> dict:
         "metadata": {
             "creators": transformed_creators,
             "publication_date": metadata.get("publication_date", ""),
+            "publisher": metadata.get("publisher", ""),
             "resource_type": resource_type,
             "title": metadata.get("title", ""),
         },
         "type": "community-submission",
+        "custom_fields": custom,
     }
 
     return transformed
@@ -104,7 +108,7 @@ def main():
     print(output)
 
     # Optionally write to file
-    output_path = "transformed_records.json"
+    output_path = FILE_NAME
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(output)
     print(f"\nSaved to {output_path}")
